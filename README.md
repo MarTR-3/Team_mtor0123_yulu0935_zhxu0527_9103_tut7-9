@@ -72,6 +72,8 @@ If the volume is increased, her lips will become larger; conversely, they will b
 
 #### Connection 
 The selected song, "Diamonds Are a Girl's Best Friend", is her classic piece. It has a stronger connection with the project concept. Moreover, by leveraging the characteristics of the song, she is able to "sing" and achieve interaction between the work and the users.
+<img width="1200" height="675" alt="frequency" src="https://github.com/user-attachments/assets/25ab44ca-1aff-49b5-8a32-2dd501218203" />
+<img width="1200" height="600" alt="mouth" src="https://github.com/user-attachments/assets/7fb73bc3-8401-4982-a459-2a19472dbf8e" />
 
 
 <br><br>
