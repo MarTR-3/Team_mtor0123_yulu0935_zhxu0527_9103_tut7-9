@@ -4,17 +4,20 @@
 
 **Project Path:** Reinterpret an existing artwork
 
-
-**Target Artwork:**  
+**Artist:** Andy Warhol
+**Target Artwork:**  Shot Sage Blue Marilyn
 ![Inspiration Source](Marilyn%20Monroe%20Image.png)
-**Artist:** 
-Andy Warhol. Marilyn Monroe. 1967
 
-<img width="293" height="382" alt="singing" src="https://github.com/user-attachments/assets/2aa2319f-a352-4570-a27b-506526c7ca5a" />
+
 
 ### Vision and Inspiration
-Our team will reinterpret Andy Warhol's "Marilyn Monroe" piece, transforming the original pop art portrait into an interactive digital art work. Warhol's works are renowned for their extensive use of repetitive images and vibrant colors. We aim to retain the iconic image of Marilyn Monroe, but make it more dynamic through user interaction, sound, color changes, and dynamic movements.
-Based on her own work, we decided to use her classic piece as the musical source. The images in the work will change in response to the sound and the actions of the audience, creating an interactive effect.
+
+![Inspiration Source](Interactive%20Light%20Walls.png)
+
+Our vision reinterprets Warhol’s Pop Art through the lens of interactive light walls. Inspired by LED installations that react to human motion, we transformed a static portrait into a responsive digital piece. By mapping mouse movements and clicks to visual shifts, we bridge 1960s aesthetics with modern interactive experiences.
+
+We aim to retain the iconic image of Marilyn Monroe, but make it more dynamic through user interaction, sound, color changes, and dynamic movements. Based on her own work, we decided to use her classic piece as the musical source. The images in the work will change in response to the sound and the actions of the audience, creating an interactive effect.
+
 
 # Part 2: Mechanics
 
