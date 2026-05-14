@@ -69,7 +69,7 @@ This mechanic transforms Warhol’s static Pop Art portrait into unstable digita
 I will incorporate Marilyn Monroe's famous song "Diamonds Are a Girl's Best Friend" into the project. 
 If the volume is increased, her lips will become larger; conversely, they will become smaller. This is to simulate the appearance of her singing with her mouth open. The background is set with ripples that change according to the music's frequency. At the same time, you can also cooperate with your team members to link the changes of color and other buttons with the key frames of the music.
 
-
+ 
 #### Connection 
 The selected song, "Diamonds Are a Girl's Best Friend", is her classic piece. It has a stronger connection with the project concept. Moreover, by leveraging the characteristics of the song, she is able to "sing" and achieve interaction between the work and the users.
 <img width="1200" height="675" alt="frequency" src="https://github.com/user-attachments/assets/25ab44ca-1aff-49b5-8a32-2dd501218203" />
