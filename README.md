@@ -9,6 +9,7 @@
 ![Inspiration Source](Marilyn%20Monroe%20Image.png)
 **Artist:** 
 Andy Warhol. Marilyn Monroe. 1967
+
 <img width="293" height="382" alt="singing" src="https://github.com/user-attachments/assets/2aa2319f-a352-4570-a27b-506526c7ca5a" />
 
 ### Vision and Inspiration
