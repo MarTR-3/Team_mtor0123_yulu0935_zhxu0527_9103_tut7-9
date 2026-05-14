@@ -5,7 +5,8 @@
 **Project Path:** Reinterpret an existing artwork
 
 **Artist:** Andy Warhol
-**Target Artwork:**  Shot Sage Blue Marilyn
+**Target Artwork:** **Shot Sage Blue Marilyn**
+
 ![Inspiration Source](Marilyn%20Monroe%20Image.png)
 
 
