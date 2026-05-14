@@ -20,6 +20,8 @@ Based on her own work, we decided to use her classic piece as the musical source
 
 ### 1. User Input (Owner: Zhanyu Xu)
 
+![User Input Mapping Diagram](diagram.png)
+
 #### Description
 This part of the project lets users control the artwork directly using the mouse and keyboard. First, when you move your mouse across the screen, the **focal point** of the image follows your movement. This makes the static shapes look like they are **swaying or shifting** along with your gestures, creating a dynamic sense of motion. 
 
