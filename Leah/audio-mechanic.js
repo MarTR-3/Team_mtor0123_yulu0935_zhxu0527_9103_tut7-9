@@ -1,64 +1,65 @@
-// Leah's Audio Mechanic
-// This code was generated with the help of ChatGPT.
-// It allows users to click the main image to play or pause the audio.
+let song;
+let fft;
+let amplitude;
 
-let leahSound;
-let audioStarted = false;
-let audioLoaded = false;
+let targetVolume = 0.55;
+let currentVolume = 0.55;
 
-function preloadAudioMechanic() {
-  soundFormats("mp3");
+let hasStarted = false;
 
-  leahSound = loadSound(
-    "assets/I Wanna Be Loved By You.mp3",
-    function () {
-      console.log("Audio loaded successfully");
-      audioLoaded = true;
-    },
-    function (error) {
-      console.error("Audio failed to load:", error);
-    }
-  );
+function preloadAudio() {
+  song = loadSound("assets/I Wanna Be Loved By You.mp3");
 }
 
-function setupAudioMechanic() {
-  // No analyser is needed now because the image does not move with the audio.
+function setupAudio() {
+  fft = new p5.FFT(0.85, 256);
+  amplitude = new p5.Amplitude(0.9);
+
+  song.setVolume(currentVolume);
+  fft.setInput(song);
+  amplitude.setInput(song);
 }
 
 function toggleAudio() {
   userStartAudio();
 
-  if (!audioLoaded) {
-    console.log("Audio is still loading");
-    return;
-  }
-
-  if (leahSound.isPlaying()) {
-    leahSound.pause();
-    audioStarted = false;
+  if (song.isPlaying()) {
+    song.pause();
   } else {
-    leahSound.loop();
-    audioStarted = true;
+    song.loop();
+    hasStarted = true;
   }
 }
 
-function drawAudioInstruction() {
-  noStroke();
+function changeVolume(amount) {
+  targetVolume = constrain(targetVolume + amount, 0, 1);
+}
 
-  fill(0, 0, 0, 160);
-  rectMode(CENTER);
-  rect(width / 2, height - 55, 380, 48, 20);
+function updateAudioData() {
+  currentVolume = lerp(currentVolume, targetVolume, 0.08);
 
-  fill(255);
-  textSize(17);
-
-  if (!audioLoaded) {
-    text("Loading audio...", width / 2, height - 55);
-  } else if (audioStarted) {
-    text("Audio is playing — click image to pause", width / 2, height - 55);
-  } else {
-    text("Click the image to play audio", width / 2, height - 55);
+  if (song) {
+    song.setVolume(currentVolume);
   }
 
-  rectMode(CORNER);
+  let isPlaying = song && song.isPlaying();
+
+  let spectrum = isPlaying ? fft.analyze() : new Array(256).fill(0);
+  let waveform = isPlaying ? fft.waveform() : new Array(256).fill(0);
+
+  let bass = isPlaying ? fft.getEnergy("bass") : 0;
+  let mid = isPlaying ? fft.getEnergy("mid") : 0;
+  let treble = isPlaying ? fft.getEnergy("treble") : 0;
+  let level = isPlaying ? amplitude.getLevel() : 0;
+
+  return {
+    spectrum,
+    waveform,
+    bass,
+    mid,
+    treble,
+    level,
+    volume: currentVolume,
+    isPlaying
+  };
 }
