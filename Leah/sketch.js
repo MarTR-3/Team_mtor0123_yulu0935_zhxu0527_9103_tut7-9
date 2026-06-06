@@ -1,3 +1,12 @@
+var leahActive = false; 
+var leahThemeIdx = 0; 
+var leahThemes = [
+  { h: [0, 255, 255],  l: [255, 0, 100], s: [255, 200, 0], b: [50, 50, 50] },     
+  { h: [255, 100, 0],  l: [0, 255, 0],   s: [200, 0, 255], b: [255, 255, 255] },   
+  { h: [255, 255, 0],  l: [255, 255, 255], s: [0, 0, 255],   b: [20, 20, 20] },   
+  { h: [200, 200, 200], l: [150, 0, 0],   s: [100, 255, 100], b: [100, 100, 255] }  
+];
+
 const IMAGE_PATH = "assets/Marilyin Monroe Image.png";
 const MOUTH_PATH = "assets/mouth.PNG";
 
@@ -66,6 +75,38 @@ function draw() {
   drawAnimatedMouth(cx, cy, displayW, displayH, audioData);
 
   drawInterfaceText(audioData);
+
+  if (leahActive && marilynImg) {
+    loadPixels(); 
+    
+    var curT = leahThemes[leahThemeIdx];
+    
+    for (var i = 0; i < pixels.length; i += 4) {
+      var r = pixels[i];
+      var g = pixels[i+1];
+      var b = pixels[i+2];
+      
+      
+      if (r > 130 && g < 60 && b < 60) {
+        pixels[i]   = curT.l[0]; pixels[i+1] = curT.l[1]; pixels[i+2] = curT.l[2];
+      }
+      
+      else if (r > 170 && g > 150 && b < 120) {
+        pixels[i]   = curT.h[0]; pixels[i+1] = curT.h[1]; pixels[i+2] = curT.h[2];
+      }
+      
+      else if (r < 150 && g > 160 && b > 160) {
+        pixels[i]   = curT.b[0]; pixels[i+1] = curT.b[1]; pixels[i+2] = curT.b[2];
+      }
+      
+      else if (r > 180 && g > 100 && b > 100 && r > g) {
+        if (r > 40 && g > 40 && b > 40) {
+          pixels[i]   = curT.s[0]; pixels[i+1] = curT.s[1]; pixels[i+2] = curT.s[2];
+        }
+      }
+    }
+    updatePixels(); 
+  }
 }
 
 function createBackgroundMask() {
@@ -273,3 +314,11 @@ function keyPressed() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
+
+window.addEventListener('keydown', function(event) {
+  if (event.key === 'k' || event.key === 'K') { 
+    leahActive = true;
+    leahThemeIdx = (leahThemeIdx + 1) % leahThemes.length;
+    console.log("🚀 Leah 的专属色彩主题已强行切换至: " + (leahThemeIdx + 1));
+  }
+});
