@@ -68,40 +68,66 @@ function draw() {
   let cx = width / 2;
   let cy = height / 2 - 10;
 
+  // 1. 【底图层】：永远保持最干净的原始大小在最下面，保证画面底盘稳固、不糊
   image(marilynImg, cx, cy, displayW, displayH);
-
   drawECGBackgroundWaves(cx, cy, displayW, displayH, audioData);
-
   drawAnimatedMouth(cx, cy, displayW, displayH, audioData);
+
+  // =====================================================================
+  // ====== 【艺术提升】：Zhanyu 的鼠标控制 —— 波普色彩错位/头发重影扩张 ======
+  // =====================================================================
+  
+  // 计算鼠标映射：最左边重影完全重合(1.0)，最右边优雅扩散到 1.15 倍
+  let hairScale = map(mouseX, 0, width, 1.0, 1.15);
+  hairScale = constrain(hairScale, 1.0, 1.15);
+
+  // 当鼠标往右移动时，才叠加这个高级的重影艺术层
+  if (hairScale > 1.01) {
+    push();
+      // 使用正片叠底或屏幕混合模式，让叠加的头发重影呈现出半透明霓虹光效
+      blendMode(MULTIPLY); 
+      
+      // 依然以头发为中心点进行重影扩张
+      let hairX = cx;
+      let hairY = cy - displayH * 0.2; 
+      translate(hairX, hairY);
+      scale(hairScale);
+      
+      let newCx = cx - hairX;
+      let newCy = cy - hairY;
+
+      // 调整透明度：让重影带有一种若隐若现的丝网印刷质感（透明度为 120）
+      tint(255, 120); 
+      
+      // 再画一次原图（带有头发），它会因为 scale 的微调呈现出从头顶向外扩散的霓虹光晕效果
+      image(marilynImg, newCx, newCy, displayW, displayH);
+    pop();
+    
+    // 恢复正常的混合模式，确保不影响后续渲染
+    blendMode(BLEND); 
+  }
+  // =====================================================================
 
   drawInterfaceText(audioData);
 
+  // 后面 Leah 的颜色代码保持不变
   if (leahActive && marilynImg) {
     loadPixels(); 
-    
     var curT = leahThemes[leahThemeIdx];
-    
     for (var i = 0; i < pixels.length; i += 4) {
-      var r = pixels[i];
-      var g = pixels[i+1];
-      var b = pixels[i+2];
-      
-      
+      var r = pixels[i]; var g = pixels[i+1]; var b = pixels[i+2];
       if (r > 130 && g < 60 && b < 60) {
-        pixels[i]   = curT.l[0]; pixels[i+1] = curT.l[1]; pixels[i+2] = curT.l[2];
+        pixels[i] = curT.l[0]; pixels[i+1] = curT.l[1]; pixels[i+2] = curT.l[2];
       }
-      
       else if (r > 170 && g > 150 && b < 120) {
-        pixels[i]   = curT.h[0]; pixels[i+1] = curT.h[1]; pixels[i+2] = curT.h[2];
+        pixels[i] = curT.h[0]; pixels[i+1] = curT.h[1]; pixels[i+2] = curT.h[2];
       }
-      
       else if (r < 150 && g > 160 && b > 160) {
-        pixels[i]   = curT.b[0]; pixels[i+1] = curT.b[1]; pixels[i+2] = curT.b[2];
+        pixels[i] = curT.b[0]; pixels[i+1] = curT.b[1]; pixels[i+2] = curT.b[2];
       }
-      
       else if (r > 180 && g > 100 && b > 100 && r > g) {
         if (r > 40 && g > 40 && b > 40) {
-          pixels[i]   = curT.s[0]; pixels[i+1] = curT.s[1]; pixels[i+2] = curT.s[2];
+          pixels[i] = curT.s[0]; pixels[i+1] = curT.s[1]; pixels[i+2] = curT.s[2];
         }
       }
     }
@@ -245,6 +271,7 @@ function drawAnimatedMouth(cx, cy, displayW, displayH, audioData) {
   let scaleX = displayW / marilynImg.width;
   let scaleY = displayH / marilynImg.height;
 
+  // 1. 算出嘴巴原本所在的绝对坐标位置
   let mouthX = imgLeft + MOUTH_CENTER.x * marilynImg.width * scaleX;
   let mouthY = imgTop + MOUTH_CENTER.y * marilynImg.height * scaleY;
 
@@ -253,13 +280,29 @@ function drawAnimatedMouth(cx, cy, displayW, displayH, audioData) {
 
   let mouthScale = getMouthScale(audioData);
 
-  image(
-    mouthImg,
-    mouthX,
-    mouthY,
-    mouthBaseW * mouthScale,
-    mouthBaseH * mouthScale
-  );
+  // 2. 直接在这里读取鼠标的 X 坐标进行映射，完全不需要去别的文件调变量了！
+  // 当鼠标在左侧时倍数是 1.0（正常），移到最右侧时放大 25 倍
+  let myMouthScale = map(mouseX, 0, width, 1.0, 25.0);
+  myMouthScale = constrain(myMouthScale, 1.0, 25.0);
+
+  // 3. 【核心技术突破】：使用矩阵隔离，防止图像撕裂或卡死
+  push();
+    // 将整个画布的原点暂时平移到嘴巴的正中心
+    translate(mouthX, mouthY);
+    
+    // 让嘴巴绕着自己的中心进行放大
+    scale(myMouthScale);
+    
+    // 关键：因为原点已经变成了 (mouthX, mouthY)，所以图片绘制的坐标必须是 (0, 0)
+    // 这样它才会完美地在屏幕中央绽放开来
+    image(
+      mouthImg,
+      0, 
+      0, 
+      mouthBaseW * mouthScale,
+      mouthBaseH * mouthScale
+    );
+  pop(); // 释放矩阵，恢复正常画布，绝对不影响 Leah 的图层和其他波普效果
 }
 
 function getMouthScale(audioData) {
