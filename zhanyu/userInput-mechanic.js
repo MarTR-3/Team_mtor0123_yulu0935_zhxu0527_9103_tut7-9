@@ -1,9 +1,8 @@
-// ====== 你原本的变量 ======
 let zhanyuPopArtActive = false; 
 let colorThemeIndex = 0; 
 
-// ====== 新增：控制嘴巴尺寸的变量 ======
-let zhanyuMouthScale = 1.0; // 1.0 代表原始大小
+
+let zhanyuMouthScale = 1.0; 
 
 const POP_ART_THEMES = [
   { hair: [255, 0, 150], lip: [0, 255, 200], skin: [0, 150, 255], bg: [255, 255, 0] },
@@ -12,13 +11,12 @@ const POP_ART_THEMES = [
   { hair: [0, 50, 200],  lip: [255, 230, 0], skin: [255, 50, 50],  bg: [150, 240, 240] }
 ];
 
-// ====== 新增功能函数：每帧由主 sketch 调用，用鼠标移动改变嘴巴大小 ======
+
 function updateZhanyuMouseInput() {
-  // map 函数：当鼠标移动到画布最右边(width)时，嘴巴放大倍数从 1.0 暴增到 30.0（大到撑满屏幕）
-  // 你可以根据实际画面大小调节 30.0 这个极限值
+  
   zhanyuMouthScale = map(mouseX, 0, width, 1.0, 30.0);
   
-  // 约束范围，防止越界
+  
   zhanyuMouthScale = constrain(zhanyuMouthScale, 1.0, 30.0);
 }
 

@@ -37,9 +37,9 @@ Our visual inspiration comes from the immersive data aesthetics of [Refik Anadol
 ![User Input Mapping Diagram](diagram.png)
 
 #### Description
-This part of the project lets users control the artwork directly using the mouse and keyboard. First, when you move your mouse across the screen, the **focal point** of the image follows your movement. This makes the static shapes look like they are **swaying or shifting** along with your gestures, creating a dynamic sense of motion. 
+This part of the project lets users control the artwork directly using the mouse and keyboard. First, the "Press K to Change Color" keyboard effect pays direct homage to Andy Warhol's iconic silk-screen prints. Each time the user presses the 'K' key, Marilyn's hair, lips, skin, and the background instantly swap into entirely different neon, high-contrast color palettes. This wild collision of colors allows the audience to "customize a pop art filter" on the spot, communicating the artistic concept that the color sovereignty of a pop cultural symbol can be reconfigured by the viewer at any moment.
 
-Second, if you **click the left mouse button**, the colors of the entire painting will change instantly, jumping from one set of colors to a completely different, brighter look. You can also press the **'N' key** to reset the image to its original state. 
+Second, the mouse-controlled "Blow a Kiss" effect delivers the most soulful and humorous interaction of the entire piece. When the audience slides the mouse, her lips magically detach from her face, gliding forward and downward along a dynamic trajectory. As they move closer to the virtual lens, the lips dramatically expand several times their original size while subtly vibrating in sync with the music's rhythm. This perfectly conveys a sense of romance and performance art, as if the character in the painting has suddenly broken through the dimensions, stepped out of the screen, and sent a giant flying kiss directly to the viewer.
 
 #### Connection 
 This design allows the audience to do more than just watch; they can actually change the art through simple actions. By providing these intuitive controls, the project transforms from a static painting into an **interactive experience**, making the artistic dialogue fun and engaging for everyone.
