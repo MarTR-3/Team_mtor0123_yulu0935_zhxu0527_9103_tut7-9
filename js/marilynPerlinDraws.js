@@ -4,7 +4,7 @@
 function drawMarilynPerlin(audioData) {
   let palette = getCurrentPalette();
 
-  background(palette.bg[0], palette.bg[1], palette.bg[2]);
+  background(0);
 
   let maxImageW = width * 0.62;
   let maxImageH = height * 0.76;
@@ -20,8 +20,9 @@ function drawMarilynPerlin(audioData) {
   let cx = width / 2;
   let cy = height / 2 - 10;
 
-  let cols = 70;
-  let rows = 70;
+  let cols = (transitionPhase === 0 ? 180 : 70);
+  let rows = (transitionPhase === 0 ? 180 : 70);
+
 
   let tileW = displayW / cols;
   let tileH = displayH / rows;
@@ -76,6 +77,18 @@ function drawMarilynPerlin(audioData) {
       );
     }
   }
+  
+  // --- Responsive UI Text ---
+  let uiSize = width * 0.018;   // 1.8% of screen width
+  uiSize = constrain(uiSize, 10, 20);  // min/max for readability
+
+    fill(255);
+    noStroke();
+    textAlign(CENTER, CENTER);
+    textSize(uiSize);
+
+    text("Press K to add a POP   |   Press M to return to the Main Menu", width / 2, height - uiSize * 2);
+
 
   imageMode(CENTER);
 }

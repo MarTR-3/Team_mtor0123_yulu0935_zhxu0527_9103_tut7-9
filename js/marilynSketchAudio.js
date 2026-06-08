@@ -1,8 +1,13 @@
 // Marilyn Sketch Audio.
-// Draws Leah's ECG background waves, animated mouth, and interface text.
+// Draws Leah's ECG background waves, animated mouth, interface text,
+// and Zhanyu's pop-art color version of Marilyn.
 
 let bgMask;
 let waveLayer;
+
+let zhanyuColoredMarilynImg;
+let lastColorThemeIndex = -1;
+let lastPopArtState = false;
 
 const EFFECT_RES = 700;
 
@@ -21,6 +26,10 @@ function setupMarilynSketchAudio() {
 
   waveLayer = createGraphics(EFFECT_RES, EFFECT_RES);
   waveLayer.pixelDensity(1);
+
+  zhanyuColoredMarilynImg = null;
+  lastColorThemeIndex = -1;
+  lastPopArtState = false;
 }
 
 function drawMarilynSketchAudio(audioData) {
@@ -38,9 +47,51 @@ function drawMarilynSketchAudio(audioData) {
   let cx = width / 2;
   let cy = height / 2 - 10;
 
+  drawZhanyuColoredMarilyn(cx, cy, displayW, displayH);
   drawECGBackgroundWaves(cx, cy, displayW, displayH, audioData);
   drawAnimatedMouth(cx, cy, displayW, displayH, audioData);
   drawInterfaceText(audioData);
+}
+
+function drawZhanyuColoredMarilyn(cx, cy, displayW, displayH) {
+  if (
+    !zhanyuColoredMarilynImg ||
+    lastColorThemeIndex !== colorThemeIndex ||
+    lastPopArtState !== zhanyuPopArtActive
+  ) {
+    zhanyuColoredMarilynImg = createZhanyuColoredImage();
+
+    lastColorThemeIndex = colorThemeIndex;
+    lastPopArtState = zhanyuPopArtActive;
+  }
+
+  image(zhanyuColoredMarilynImg, cx, cy, displayW, displayH);
+}
+
+function createZhanyuColoredImage() {
+  let newImg = createImage(marilynImg.width, marilynImg.height);
+
+  marilynImg.loadPixels();
+  newImg.loadPixels();
+
+  for (let i = 0; i < marilynImg.pixels.length; i += 4) {
+    let r = marilynImg.pixels[i];
+    let g = marilynImg.pixels[i + 1];
+    let b = marilynImg.pixels[i + 2];
+    let a = marilynImg.pixels[i + 3];
+
+    // Get Zhanyu's pop-art color for this pixel
+    let newColor = getZhanyuPixelColor(r, g, b);
+
+    // Multiply blend — keeps shadows & highlights
+    newImg.pixels[i]     = (r / 255) * newColor[0];
+    newImg.pixels[i + 1] = (g / 255) * newColor[1];
+    newImg.pixels[i + 2] = (b / 255) * newColor[2];
+    newImg.pixels[i + 3] = a; // keep original alpha
+  }
+
+  newImg.updatePixels();
+  return newImg;
 }
 
 function createBackgroundMask() {
@@ -176,7 +227,7 @@ function drawAnimatedMouth(cx, cy, displayW, displayH, audioData) {
   let mouthBaseW = MOUTH_SIZE.w * marilynImg.width * scaleX;
   let mouthBaseH = MOUTH_SIZE.h * marilynImg.height * scaleY;
 
-  let mouthScale = getMouthScale(audioData);
+  let mouthScale = getMouthScale(audioData) * zhanyuMouthScale;
 
   image(
     mouthImg,
