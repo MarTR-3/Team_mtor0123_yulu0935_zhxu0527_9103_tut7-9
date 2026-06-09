@@ -72,12 +72,13 @@ This mechanic transforms Warhol’s static Pop Art portrait into unstable digita
 ### 3. Audio (Owner: Leah)
 
 #### Description
-I will incorporate Marilyn Monroe's famous song "Diamonds Are a Girl's Best Friend" into the project. 
-If the volume is increased, her lips will become larger; conversely, they will become smaller. This is to simulate the appearance of her singing with her mouth open. The background is set with ripples that change according to the music's frequency. At the same time, you can also cooperate with your team members to link the changes of color and other buttons with the key frames of the music.
+For the audio section, I incorporated Marilyn Monroe’s song I Wanna Be Loved By You into the project. The song is used to create a stronger connection between the visual animation and Marilyn Monroe’s iconic performance style.
+
+In the interaction, the music volume controls the movement of her lips. When the volume becomes louder, her lips become larger; when the volume becomes softer, her lips become smaller. This creates the effect of Marilyn Monroe singing along with the song. The background also includes audio-responsive ripple effects that change with the frequency and rhythm of the music, making the whole webpage feel more dynamic.
 
  
 #### Connection 
-The selected song, "Diamonds Are a Girl's Best Friend", is her classic piece. It has a stronger connection with the project concept. Moreover, by leveraging the characteristics of the song, she is able to "sing" and achieve interaction between the work and the users.
+The selected song, I Wanna Be Loved By You, is strongly associated with Marilyn Monroe and her well-known screen image. By using this song, the project allows the artwork to feel more alive and performative. The lip movement and background ripples respond directly to the audio, creating an interaction between the music, the visual design, and the user.
 <img width="1200" height="675" alt="frequency" src="https://github.com/user-attachments/assets/25ab44ca-1aff-49b5-8a32-2dd501218203" />
 <img width="1200" height="600" alt="mouth" src="https://github.com/user-attachments/assets/7fb73bc3-8401-4982-a459-2a19472dbf8e" />
 
@@ -87,6 +88,12 @@ The selected song, "Diamonds Are a Girl's Best Friend", is her classic piece. It
 
 
 The project combines user input, audio interaction, Perlin noise, randomness, and time-based effects into a single interactive screen. Mouse movement changes the focal point and colour palettes of Marilyn Monroe’s portrait, while keyboard inputs activate different media states and reset functions. At the same time, Perlin noise continuously animates the artwork through flowing distortions, drifting scanlines, particle motion, and glitch transitions. Audio frequencies from Diamonds Are a Girl’s Best Friend control ripple effects and Marilyn’s lip movement, making the portrait appear to sing. Together, these mechanics gradually destabilize the image into particles, ASCII characters, duplicated fragments, and digital noise, visually connecting Pop Art with contemporary media aesthetics.
+
+<br><br>
+## References:
+ Audio Player. (2023). P5js.org. https://p5js.org/examples/imported-media-create-audio/
+ Marilyn MonroeBaidu Encyclopedia. (2019). Marilyn MonroeBaidu Encyclopedia. Baike.baidu.com. https://share.google/1nqWZit68LGQmlamk
+ The Coding Train. (2019). Thecodingtrain.com. https://thecodingtrain.com/
 
 <br><br>
 ## AI acknowledgement:
@@ -106,7 +113,7 @@ The final design decisions, creative direction, code review, testing, and integr
 The work is designed as an interactive, screen‑based experience that invites the viewer to navigate between two distinct visual systems. Upon loading the page, the user encounters a menu whose colours shift unpredictably, echoing Warhol’s fascination with seriality and chromatic experimentation. To begin, the viewer selects one of the circular buttons:
 
 #### Audio Mode:
-click the red‑tinted “Audio” circle to activate a sound‑responsive animation. The visual composition reacts to the music’s bass, mid, and treble frequencies, producing a dynamic portrait that expands and contracts in rhythm with the audio.
+Click the red "Audio" circle to activate the sound response animation. The visual composition reacts to the music's bass, mid-range and treble frequencies, producing dynamic portraits that expand and contract with the audio rhythm. As the keys are pressed and the sound changes, the frequency of the background will change.
 
 #### Abstract Movement Mode:
 click the contrasting “Abstract Movement” circle to enter a Perlin‑noise‑driven transformation of the Marilyn image. The portrait dissolves into shifting grids, points, and ASCII characters, cycling through phases that evoke Warhol’s mechanical reproduction processes.
