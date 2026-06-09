@@ -34,7 +34,7 @@ Our visual inspiration comes from the immersive data aesthetics of [Refik Anadol
 
 ### 1. User Input (Owner: Zhanyu Xu)
 
-| <img width="300" alt="Inspiration 1" src="asset/ins1.png" /> | <img width="300" alt="Inspiration 2" src="asset/ins2.png" /> |
+![Inspiration 1](https://github.com/MarTR-3/Team_mtor0123_yulu0935_zhxu0527_9103_tut7-9/blob/feature/user-input-Zhanyu/assets/images/inspiration%201.png?raw=true) | ![Inspiration 2](https://github.com/MarTR-3/Team_mtor0123_yulu0935_zhxu0527_9103_tut7-9/blob/feature/user-input-Zhanyu/assets/images/inspiration%202.png?raw=true) |
 
 #### Description
 This part of the project lets users control the artwork directly using the mouse and keyboard. 
@@ -45,7 +45,7 @@ Second，the "Press K to Change Color" keyboard effect pays direct homage to And
 
 Thirdly, the mouse-controlled "Blow a Kiss" effect delivers the most soulful and humorous interaction of the entire piece. When the audience slides the mouse, her lips magically detach from her face, gliding forward and downward along a dynamic trajectory. As they move closer to the virtual lens, the lips dramatically expand several times their original size while subtly vibrating in sync with the music's rhythm. This perfectly conveys a sense of romance and performance art, as if the character in the painting has suddenly broken through the dimensions, stepped out of the screen, and sent a giant flying kiss directly to the viewer.
 
-Finally, you can press 3, and then, Splitting the single large square into three identical, side-by-side images shifts the piece from a lone portrait into a visual matrix of industrial repetition, giving it a dynamic, high-tech rhythm.
+Finally, you can press 3, and an image processed with a glass-shatter effect features misaligned fragments that resemble a spiritual world sliced by the digital age. Through this "shattered mirror," it metaphors the vulnerability behind beauty and the struggle for identity within the online torrent.
 
 #### Connection 
 This design allows the audience to do more than just watch; they can actually change the art through simple actions. By providing these intuitive controls, the project transforms from a static painting into an **interactive experience**, making the artistic dialogue fun and engaging for everyone.

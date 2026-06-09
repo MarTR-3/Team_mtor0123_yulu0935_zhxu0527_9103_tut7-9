@@ -209,51 +209,62 @@ function drawAbstractMode() {
   };
 
   
+  let maxImageW = width * 0.62;
+  let maxImageH = height * 0.76;
+  let imgScale = min(maxImageW / marilynImg.width, maxImageH / marilynImg.height);
+  let displayW = marilynImg.width * imgScale;
+  let displayH = marilynImg.height * imgScale;
+  
+  let cx = width / 2;
+  let cy = height / 2 - 10;
+  let x0 = cx - displayW / 2;
+  let y0 = cy - displayH / 2;
+
+  
   if (typeof zhanyuShapeMode !== 'undefined' && zhanyuShapeMode === 333) {
     
+    push();
+      drawMarilynPerlin(silentAudioData);
+    pop();
     
-    drawMarilynPerlin(silentAudioData);
-
     
-    let maxImageW = width * 0.62;
-    let maxImageH = height * 0.76;
-    let imgScale = min(maxImageW / marilynImg.width, maxImageH / marilynImg.height);
-    let displayW = marilynImg.width * imgScale;
-    let displayH = marilynImg.height * imgScale;
-    
-    let cx = width / 2;
-    let cy = height / 2 - 10;
-    let x0 = cx - displayW / 2;
-    let y0 = cy - displayH / 2;
-
-   
     let snapshot = get(x0, y0, displayW, displayH);
 
-    
-    background(0);
+  
+  
 
     push();
+      let pieces = 8; 
+      let sectW = displayW / pieces; 
       
-      let shrinkScale = 0.55; 
-      let newW = displayW * shrinkScale;
-      let newH = displayH * shrinkScale;
-      let spacing = newW * 1.15; 
-      imageMode(CENTER);
-
-      
-      image(snapshot, cx, cy, newW, newH);
-
-      
-      image(snapshot, cx - spacing, cy, newW, newH);
-
-      
-      image(snapshot, cx + spacing, cy, newW, newH);
+    
+      for (let i = 0; i < pieces; i++) {
+        
+        let offsetX = sin(i * 150 + frameCount * 0.02) * 40;
+        let offsetY = cos(i * 200 + frameCount * 0.02) * 40;
+        
+        let rotateAngle = sin(i * 50) * 8; 
+        
+        push();
+         
+          let pieceCenterX = x0 + i * sectW + sectW / 2 + offsetX;
+          let pieceCenterY = cy + offsetY;
+          translate(pieceCenterX, pieceCenterY);
+          rotate(radians(rotateAngle));
+          
+          imageMode(CENTER);
+          
+        
+          image(snapshot, 0, 0, sectW, displayH, i * sectW, 0, sectW, displayH);
+        pop();
+      }
     pop();
 
   } else {
     
     drawMarilynPerlin(silentAudioData);
   }
+  
   
   push();
     let uiSize = width * 0.018;   
@@ -264,15 +275,13 @@ function drawAbstractMode() {
     noStroke();
     rect(0, height - uiSize * 3.5, width, uiSize * 3.5);
 
-    // 印上你干净完美的全新一变三交互提示
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(uiSize);
-    text("Press 3 to Split 3 | Press K to POP | Press M to Menu", width / 2, height - uiSize * 2);
+    
+    text("Press 3 to toggle the shatter effect | Press K to POP | Press M to Menu", width / 2, height - uiSize * 2);
   pop();
-  
 }
-
 
 function mousePressed() {
   if (currentMode === 0) {
