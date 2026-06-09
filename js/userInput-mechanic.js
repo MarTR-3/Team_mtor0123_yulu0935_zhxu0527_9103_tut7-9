@@ -14,10 +14,10 @@ const POP_ART_THEMES = [
 
 function updateZhanyuMouseInput() {
   
-  zhanyuMouthScale = map(mouseX, 0, width, 1.0, 30.0);
+  zhanyuMouthScale = map(mouseX, 0, width, 0.9, 2.2);
   
   
-  zhanyuMouthScale = constrain(zhanyuMouthScale, 1.0, 30.0);
+  zhanyuMouthScale = constrain(zhanyuMouthScale, 0.9, 2.2);
 }
 
 function checkZhanyuKeyInput() {
@@ -50,4 +50,8 @@ function getZhanyuPixelColor(origR, origG, origB) {
         }
         return currentTheme.skin; 
     }
+}
+
+function handlePaletteKeys() {
+  checkZhanyuKeyInput();
 }

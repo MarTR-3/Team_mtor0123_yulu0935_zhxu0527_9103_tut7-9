@@ -50,18 +50,16 @@ function draw() {
 
 
 function mousePressed() {
-    
     let dRed = dist(mouseX, mouseY, btnRedX, btnRedY);
     if (dRed < btnSize / 2) { 
-        console.log("正在跳转到 Leah 的独立网页...");
-       
+        console.log("Redirecting to Leah's independent webpage...");
         window.location.href = "../Leah/index.html";
     }
 
     
     let dOrange = dist(mouseX, mouseY, btnOrangeX, btnOrangeY);
     if (dOrange < btnSize / 2) {
-        console.log("正在跳转到最外层的柏林噪声网页...");
+        console.log("Redirecting to the outer Perlin Noise webpage...");
         window.location.href = "../index.html";
     }
 }

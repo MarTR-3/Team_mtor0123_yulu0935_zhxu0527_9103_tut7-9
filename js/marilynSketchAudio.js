@@ -1,8 +1,9 @@
-// Marilyn Sketch Audio.
-// Draws Leah's ECG background waves, animated mouth, and interface text.
-
 let bgMask;
 let waveLayer;
+
+let zhanyuColoredMarilynImg;
+let lastColorThemeIndex = -1;
+let lastPopArtState = false;
 
 const EFFECT_RES = 700;
 
@@ -21,6 +22,10 @@ function setupMarilynSketchAudio() {
 
   waveLayer = createGraphics(EFFECT_RES, EFFECT_RES);
   waveLayer.pixelDensity(1);
+
+  zhanyuColoredMarilynImg = null;
+  lastColorThemeIndex = -1;
+  lastPopArtState = false;
 }
 
 function drawMarilynSketchAudio(audioData) {
@@ -38,9 +43,51 @@ function drawMarilynSketchAudio(audioData) {
   let cx = width / 2;
   let cy = height / 2 - 10;
 
+  drawZhanyuColoredMarilyn(cx, cy, displayW, displayH);
   drawECGBackgroundWaves(cx, cy, displayW, displayH, audioData);
   drawAnimatedMouth(cx, cy, displayW, displayH, audioData);
   drawInterfaceText(audioData);
+}
+
+function drawZhanyuColoredMarilyn(cx, cy, displayW, displayH) {
+  if (
+    !zhanyuColoredMarilynImg ||
+    lastColorThemeIndex !== colorThemeIndex ||
+    lastPopArtState !== zhanyuPopArtActive
+  ) {
+    zhanyuColoredMarilynImg = createZhanyuColoredImage();
+
+    lastColorThemeIndex = colorThemeIndex;
+    lastPopArtState = zhanyuPopArtActive;
+  }
+
+  image(zhanyuColoredMarilynImg, cx, cy, displayW, displayH);
+}
+
+function createZhanyuColoredImage() {
+  let newImg = createImage(marilynImg.width, marilynImg.height);
+
+  marilynImg.loadPixels();
+  newImg.loadPixels();
+
+  for (let i = 0; i < marilynImg.pixels.length; i += 4) {
+    let r = marilynImg.pixels[i];
+    let g = marilynImg.pixels[i + 1];
+    let b = marilynImg.pixels[i + 2];
+    let a = marilynImg.pixels[i + 3];
+
+    // Get Zhanyu's pop-art color for this pixel
+    let newColor = getZhanyuPixelColor(r, g, b);
+
+    // Multiply blend — keeps shadows & highlights
+    newImg.pixels[i]     = (r / 255) * newColor[0];
+    newImg.pixels[i + 1] = (g / 255) * newColor[1];
+    newImg.pixels[i + 2] = (b / 255) * newColor[2];
+    newImg.pixels[i + 3] = a; // keep original alpha
+  }
+
+  newImg.updatePixels();
+  return newImg;
 }
 
 function createBackgroundMask() {
@@ -176,7 +223,7 @@ function drawAnimatedMouth(cx, cy, displayW, displayH, audioData) {
   let mouthBaseW = MOUTH_SIZE.w * marilynImg.width * scaleX;
   let mouthBaseH = MOUTH_SIZE.h * marilynImg.height * scaleY;
 
-  let mouthScale = getMouthScale(audioData);
+  let mouthScale = getMouthScale(audioData) * zhanyuMouthScale;
 
   image(
     mouthImg,
@@ -205,12 +252,13 @@ function drawInterfaceText(audioData) {
     text("Click anywhere to play / resume the song", width / 2, height - 62);
   } else {
     text("Click again to pause | down lower volume | up higher volume", width / 2, height - 62);
+    text("Press K to add a POP   |   Press M to return to the Main Menu", width / 2, height - 35);
   }
 
   let barW = 180;
   let barH = 6;
   let barX = width / 2 - barW / 2;
-  let barY = height - 35;
+  let barY = height - 85;
 
   fill(220);
   rect(barX, barY, barW, barH, 10);

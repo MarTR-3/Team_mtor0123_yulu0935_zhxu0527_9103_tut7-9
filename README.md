@@ -34,12 +34,18 @@ Our visual inspiration comes from the immersive data aesthetics of [Refik Anadol
 
 ### 1. User Input (Owner: Zhanyu Xu)
 
-![User Input Mapping Diagram](diagram.png)
+| <img width="300" alt="Inspiration 1" src="asset/ins1.png" /> | <img width="300" alt="Inspiration 2" src="asset/ins2.png" /> |
 
 #### Description
-This part of the project lets users control the artwork directly using the mouse and keyboard. First, the "Press K to Change Color" keyboard effect pays direct homage to Andy Warhol's iconic silk-screen prints. Each time the user presses the 'K' key, Marilyn's hair, lips, skin, and the background instantly swap into entirely different neon, high-contrast color palettes. This wild collision of colors allows the audience to "customize a pop art filter" on the spot, communicating the artistic concept that the color sovereignty of a pop cultural symbol can be reconfigured by the viewer at any moment.
+This part of the project lets users control the artwork directly using the mouse and keyboard. 
 
-Second, the mouse-controlled "Blow a Kiss" effect delivers the most soulful and humorous interaction of the entire piece. When the audience slides the mouse, her lips magically detach from her face, gliding forward and downward along a dynamic trajectory. As they move closer to the virtual lens, the lips dramatically expand several times their original size while subtly vibrating in sync with the music's rhythm. This perfectly conveys a sense of romance and performance art, as if the character in the painting has suddenly broken through the dimensions, stepped out of the screen, and sent a giant flying kiss directly to the viewer.
+First, I create a menu page with two buttons to provide you to choose which one you like.
+
+Second，the "Press K to Change Color" keyboard effect pays direct homage to Andy Warhol's iconic silk-screen prints. Each time the user presses the 'K' key, Marilyn's hair, lips, skin, and the background instantly swap into entirely different neon, high-contrast color palettes. This wild collision of colors allows the audience to "customize a pop art filter" on the spot, communicating the artistic concept that the color sovereignty of a pop cultural symbol can be reconfigured by the viewer at any moment.
+
+Thirdly, the mouse-controlled "Blow a Kiss" effect delivers the most soulful and humorous interaction of the entire piece. When the audience slides the mouse, her lips magically detach from her face, gliding forward and downward along a dynamic trajectory. As they move closer to the virtual lens, the lips dramatically expand several times their original size while subtly vibrating in sync with the music's rhythm. This perfectly conveys a sense of romance and performance art, as if the character in the painting has suddenly broken through the dimensions, stepped out of the screen, and sent a giant flying kiss directly to the viewer.
+
+Finally, you can press 3, and then, Splitting the single large square into three identical, side-by-side images shifts the piece from a lone portrait into a visual matrix of industrial repetition, giving it a dynamic, high-tech rhythm.
 
 #### Connection 
 This design allows the audience to do more than just watch; they can actually change the art through simple actions. By providing these intuitive controls, the project transforms from a static painting into an **interactive experience**, making the artistic dialogue fun and engaging for everyone.

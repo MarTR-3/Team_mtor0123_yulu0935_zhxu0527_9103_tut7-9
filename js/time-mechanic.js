@@ -16,23 +16,13 @@ let transitionStartedAt = 0;
 // hold = how long the phase stays still.
 // transition = how long it takes to change into the next phase.
 // 1000 = 1 second.
-let phaseTiming = [
-  {
-    name: "mini rectangles",
-    hold: 3000,
-    transition: 2000
-  },
-  {
-    name: "rounded points",
-    hold: 3000,
-    transition: 2000
-  },
-  {
-    name: "ASCII art",
-    hold: 4000,
-    transition: 2500
-  }
+phaseTiming = [
+  { name: "full image", hold: 2500, transition: 2000 },
+  { name: "mini rectangles", hold: 3000, transition: 2000 },
+  { name: "rounded points", hold: 5000, transition: 1500 },
+  { name: "ASCII art", hold: 3000, transition: 2500 }
 ];
+
 
 function setupTimeSystem() {
   phaseStartedAt = millis();
@@ -61,7 +51,7 @@ function updateTimeSystem() {
     );
 
     if (transitionProgress >= 1) {
-      transitionPhase = (transitionPhase + 1) % 3;
+      transitionPhase = (transitionPhase + 1) % 4;
       phaseStartedAt = millis();
       transitionStartedAt = millis();
       transitionProgress = 0;
@@ -75,5 +65,5 @@ function getSmoothProgress() {
 }
 
 function getNextPhase() {
-  return (transitionPhase + 1) % 3;
+  return (transitionPhase + 1) % 4;
 }
