@@ -1,6 +1,3 @@
-// Marilyn Perlin Draws.
-// Draws the Perlin / ASCII Marilyn system.
-
 function drawMarilynPerlin(audioData) {
   let palette = getCurrentPalette();
 

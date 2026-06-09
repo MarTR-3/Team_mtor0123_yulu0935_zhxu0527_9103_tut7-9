@@ -21,10 +21,10 @@ function updateZhanyuMouseInput() {
 }
 
 function checkZhanyuKeyInput() {
-    if (keyCode === 75) { // 'K' 键
+    if (keyCode === 75) { 
         zhanyuPopArtActive = true;
         colorThemeIndex = (colorThemeIndex + 1) % POP_ART_THEMES.length;
-        console.log("Zhanyu机制：已成功切换至波普艺术色彩主题 " + (colorThemeIndex + 1));
+        console.log("Zhanyu System: Successfully switched to Pop Art theme " + (colorThemeIndex + 1));
     }
 }
 

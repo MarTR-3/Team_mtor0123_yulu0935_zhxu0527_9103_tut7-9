@@ -1,7 +1,3 @@
-// Marilyn Sketch Audio.
-// Draws Leah's ECG background waves, animated mouth, interface text,
-// and Zhanyu's pop-art color version of Marilyn.
-
 let bgMask;
 let waveLayer;
 
@@ -256,12 +252,13 @@ function drawInterfaceText(audioData) {
     text("Click anywhere to play / resume the song", width / 2, height - 62);
   } else {
     text("Click again to pause | down lower volume | up higher volume", width / 2, height - 62);
+    text("Press K to add a POP   |   Press M to return to the Main Menu", width / 2, height - 35);
   }
 
   let barW = 180;
   let barH = 6;
   let barX = width / 2 - barW / 2;
-  let barY = height - 35;
+  let barY = height - 85;
 
   fill(220);
   rect(barX, barY, barW, barH, 10);

@@ -193,6 +193,7 @@ function drawAudioMode() {
   drawMarilynSketchAudio(audioData);
 }
 
+
 function drawAbstractMode() {
   updateTimeSystem();
 
@@ -207,8 +208,71 @@ function drawAbstractMode() {
     isPlaying: false
   };
 
-  drawMarilynPerlin(silentAudioData);
+  
+  if (typeof zhanyuShapeMode !== 'undefined' && zhanyuShapeMode === 333) {
+    
+    
+    drawMarilynPerlin(silentAudioData);
+
+    
+    let maxImageW = width * 0.62;
+    let maxImageH = height * 0.76;
+    let imgScale = min(maxImageW / marilynImg.width, maxImageH / marilynImg.height);
+    let displayW = marilynImg.width * imgScale;
+    let displayH = marilynImg.height * imgScale;
+    
+    let cx = width / 2;
+    let cy = height / 2 - 10;
+    let x0 = cx - displayW / 2;
+    let y0 = cy - displayH / 2;
+
+   
+    let snapshot = get(x0, y0, displayW, displayH);
+
+    
+    background(0);
+
+    push();
+      
+      let shrinkScale = 0.55; 
+      let newW = displayW * shrinkScale;
+      let newH = displayH * shrinkScale;
+      let spacing = newW * 1.15; 
+      imageMode(CENTER);
+
+      
+      image(snapshot, cx, cy, newW, newH);
+
+      
+      image(snapshot, cx - spacing, cy, newW, newH);
+
+      
+      image(snapshot, cx + spacing, cy, newW, newH);
+    pop();
+
+  } else {
+    
+    drawMarilynPerlin(silentAudioData);
+  }
+  
+  push();
+    let uiSize = width * 0.018;   
+    uiSize = constrain(uiSize, 10, 20);  
+    
+    rectMode(CORNER);
+    fill(0);
+    noStroke();
+    rect(0, height - uiSize * 3.5, width, uiSize * 3.5);
+
+    // 印上你干净完美的全新一变三交互提示
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textSize(uiSize);
+    text("Press 3 to Split 3 | Press K to POP | Press M to Menu", width / 2, height - uiSize * 2);
+  pop();
+  
 }
+
 
 function mousePressed() {
   if (currentMode === 0) {
@@ -232,6 +296,13 @@ function mousePressed() {
 }
 
 function keyPressed() {
+  if (key === '3') {
+    if (typeof zhanyuShapeMode === 'undefined' || zhanyuShapeMode !== 333) {
+      zhanyuShapeMode = 333; 
+    } else {
+      zhanyuShapeMode = 1;  
+    }
+  }
   if (key === "m" || key === "M") {
     currentMode = 0;
     return;
@@ -267,3 +338,4 @@ function windowResized() {
   buttonSize = constrain(buttonSize, 120, 260);  
 
 }
+
