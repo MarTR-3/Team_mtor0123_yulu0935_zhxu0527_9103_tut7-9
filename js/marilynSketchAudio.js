@@ -250,6 +250,7 @@ function drawInterfaceText(audioData) {
 
   if (!audioData.isPlaying) {
     text("Click anywhere to play / resume the song", width / 2, height - 62);
+    text("Press K to add a POP   |   Press M to return to the Main Menu", width / 2, height - 35);
   } else {
     text("Click again to pause | down lower volume | up higher volume", width / 2, height - 62);
     text("Press K to add a POP   |   Press M to return to the Main Menu", width / 2, height - 35);
