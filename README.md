@@ -87,3 +87,28 @@ The selected song, "Diamonds Are a Girl's Best Friend", is her classic piece. It
 
 
 The project combines user input, audio interaction, Perlin noise, randomness, and time-based effects into a single interactive screen. Mouse movement changes the focal point and colour palettes of Marilyn Monroe’s portrait, while keyboard inputs activate different media states and reset functions. At the same time, Perlin noise continuously animates the artwork through flowing distortions, drifting scanlines, particle motion, and glitch transitions. Audio frequencies from Diamonds Are a Girl’s Best Friend control ripple effects and Marilyn’s lip movement, making the portrait appear to sing. Together, these mechanics gradually destabilize the image into particles, ASCII characters, duplicated fragments, and digital noise, visually connecting Pop Art with contemporary media aesthetics.
+
+<br><br>
+## AI acknowledgement:
+
+
+This project was developed through a collaborative workflow involving ChatGPT (Codex) and Microsoft Copilot. AI tools were used throughout the design and development process to support ideation, code generation, debugging, and technical problem-solving.
+
+ChatGPT (Codex) served as the primary coding collaborator, assisting with the implementation of interactive features, refinement of program logic, troubleshooting errors, and iterative development of the project’s functionality. Through an ongoing dialogue, the AI helped explore alternative approaches, explain technical concepts, and optimise code structure while maintaining the intended creative direction.
+
+Microsoft Copilot provided supplementary support by suggesting code completions, accelerating implementation tasks, and assisting with routine programming operations.
+
+The final design decisions, creative direction, code review, testing, and integration of all components were undertaken by the author. AI tools were used as assistive technologies to support the development process rather than as autonomous creators of the final work.
+
+<br><br>
+## Interaction instructions:
+
+The work is designed as an interactive, screen‑based experience that invites the viewer to navigate between two distinct visual systems. Upon loading the page, the user encounters a menu whose colours shift unpredictably, echoing Warhol’s fascination with seriality and chromatic experimentation. To begin, the viewer selects one of the circular buttons:
+
+#### Audio Mode:
+click the red‑tinted “Audio” circle to activate a sound‑responsive animation. The visual composition reacts to the music’s bass, mid, and treble frequencies, producing a dynamic portrait that expands and contracts in rhythm with the audio.
+
+#### Abstract Movement Mode:
+click the contrasting “Abstract Movement” circle to enter a Perlin‑noise‑driven transformation of the Marilyn image. The portrait dissolves into shifting grids, points, and ASCII characters, cycling through phases that evoke Warhol’s mechanical reproduction processes.
+
+Within either mode, the viewer may press **_K_** to cycle through alternative pop‑art colour themes, or press **_M_** to return to the main menu. In Audio Mode, **_the up and down arrow keys_** adjust the volume, while a mouse click toggles play and pause. The work encourages slow exploration: moving between modes, observing the transitions, and experiencing how colour, sound, and motion converge into a contemporary reinterpretation of Warhol’s visual logic.
